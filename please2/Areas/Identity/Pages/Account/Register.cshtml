@@ -1,0 +1,136 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    
+}
+<style>
+    body {
+        background-color: #ecf5fc;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar {
+        background-color: #343a40; 
+        color: #ffffff;
+        padding: 15px;
+        text-align: center;
+        border-bottom: 2px solid #ffffff; /* Blanc */
+    }
+
+    #account {
+        background: #ffffff url('votre-image.jpg') no-repeat top right; /* Image de fond à droite */
+        background-size: cover; /* Assurez-vous que l'image couvre tout le conteneur */
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-out;
+        margin: 20px;
+    }
+
+    h2 {
+        color: #343a40; /* Gris foncé */
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-floating {
+        margin-bottom: 20px;
+    }
+
+        .form-floating input {
+            border: 2px solid #343a40; /* Gris foncé */
+            border-radius: 8px;
+        }
+
+        .form-floating label {
+            color: #343a40; /* Gris foncé */
+        }
+
+    .btn-primary {
+        background-color: #343a40; /* Gris foncé */
+        border-color: #343a40;
+        transition: background-color 0.3s ease-out;
+    }
+
+        .btn-primary:hover {
+            background-color: #23282d; /* Gris plus foncé */
+            border-color: #23282d;
+        }
+
+    .text-danger {
+        color: #e74c3c; /* Rouge */
+        margin-top: 5px;
+        font-size: 0.9em;
+    }
+
+    #external-account {
+        text-align: center;
+    }
+
+        #external-account button {
+            margin: 10px;
+        }
+</style>
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form id="account" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Create a New Account.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                    <input asp-for="Input.CIN" class="form-control" autocomplete="username" aria-required="true" placeholder="CIN" />
+                    <label asp-for="Input.CIN">CIN</label>
+                    <span asp-validation-for="Input.CIN" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                    <input asp-for="Input.FirstName" class="form-control" autocomplete="username" aria-required="true" placeholder="FirstName" />
+                    <label asp-for="Input.FirstName">FirstName</label>
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.LastName" class="form-control" autocomplete="username" aria-required="true" placeholder="LastName" />
+                    <label asp-for="Input.LastName">LastName</label>
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Phone" class="form-control" autocomplete="username" aria-required="true" placeholder="Phone" />
+                    <label asp-for="Input.Phone">Phone</label>
+                    <span asp-validation-for="Input.Phone" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Address" class="form-control" autocomplete="username" aria-required="true" placeholder="Address" />
+                    <label asp-for="Input.Address">Address</label>
+                    <span asp-validation-for="Input.Address" class="text-danger"></span>
+                </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.Password">Password</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+        </form>
+        </section>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+       
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

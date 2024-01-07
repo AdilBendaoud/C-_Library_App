@@ -1,0 +1,90 @@
+﻿@model please2.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    body {
+        background-color: #ecf5fc;
+    
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .card {
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        color: black;
+        font-size: 28px; /* Change the font size */
+        font-weight: bold; /* Make the text bold */
+        margin-bottom: 20px; /* Add some bottom margin */
+        /* Add any other styling properties you want */
+    }
+
+    h4 {
+        color: #495057;
+    }
+
+    .confirmation-message {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .btn-confirm {
+        background-color: #007bff;
+        color: #fff;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+        .btn-confirm:hover {
+            background-color: #0056b3;
+            border: 1px solid #0056b3;
+        }
+
+    .btn-back {
+        color: #007bff;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+
+        .btn-back:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="container">
+    <div class="card">
+        <h1>Reservation Request</h1>
+        
+
+        <div class="confirmation-message">
+            Are you sure you want to reserve <strong>@Model.Book</strong>?
+        </div>
+
+        <form method="post" asp-controller="Reservations" asp-action="Create" asp-route-id="@Model.Bookid">
+            <button type="submit" class="btn btn-confirm" id="confirmationButton">Yes</button>
+        </form>
+
+        <a asp-controller="Livres" asp-action="Index" class="btn btn-back">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

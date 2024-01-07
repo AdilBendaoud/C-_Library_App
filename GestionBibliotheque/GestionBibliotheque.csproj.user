@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Adherents.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdherentsForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="auteurForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Auteurs.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CategorieForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Categories.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EmployeForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Employes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Empruntes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EmpruntesForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="livreForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Livres.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MessageBoxCustom.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Adherents.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdherentsForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Assets\DictionaryHeaderDataGrid.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Assets\mainTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="auteurForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Auteurs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CategorieForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Categories.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EmployeForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Employes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Empruntes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EmpruntesForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="livreForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Livres.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MessageBoxCustom.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

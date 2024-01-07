@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\please2.props" />
+</Project>

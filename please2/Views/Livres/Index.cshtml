@@ -1,0 +1,192 @@
+﻿@using static please2.Models.paginatedList;
+@model PaginatedList<please2.Models.Livre1>
+
+@{
+    ViewData["Title"] = "Index";
+    List<string> categories = new List<string>
+            {
+                "Fiction",
+                "Science Fiction",
+                "Mystery",
+                "Thriller",
+                "Fantasy",
+                "Romance",
+                "Biography",
+                "History",
+                "Self-Help",
+                "Travel"
+            };
+}
+<style>
+    /* Ajoutez vos styles CSS ici */
+
+    body {
+        background-color: #ecf5fc;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+    .container {
+        padding-top: 20px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        margin-bottom: 20px;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .card-footer {
+        text-align: center;
+    }
+
+    .btn-outline-dark {
+        color: #343a40;
+        border-color: #343a40;
+    }
+
+        .btn-outline-dark:hover {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+    .btn-default {
+        color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-default:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+
+    ul.categories {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+        ul.categories li {
+            margin: 0 15px;
+        }
+
+        ul.categories a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s ease-out;
+        }
+
+            ul.categories a:hover {
+                color: #0056b3;
+            }
+</style>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>      
+</form>
+<ul class="categories">
+    @foreach (var x in categories)
+    {
+        <li>
+            <a asp-action="Index" asp-route-cat="@x">
+                @x
+            </a>
+        </li>
+    }
+</ul>
+
+
+        <div class="py-5 container">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 ">
+@foreach (var liv in Model) {
+            
+            <div class="col mb-5">
+                <div class="card h-100"><a asp-action="Details" asp-route-id="@liv.Id">
+                    <!-- Product image-->
+                        <img class="card-img-top" src="/images/@liv.img" alt="" style="max-width: 100%;" />
+                        <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">@Html.DisplayFor(modelItem => liv.title)</h5>
+                            <div> @Html.DisplayFor(modelItem => liv.author)</div>
+                            <div> @Html.DisplayFor(modelItem => liv.category)</div>
+                            <div> @Html.DisplayFor(modelItem => liv.price)$ </div>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center">
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <a class="btn btn-outline-dark mt-auto" asp-controller="Reservations" asp-action="Create" asp-route-id="@liv?.Id">Emprunt Demand</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="btn btn-outline-dark mt-auto disabled">Emprunt Demand</span>
+                                            <div class="text-muted mt-2">Log In to Make a reservation .</div>
+                                        }
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div>
+                    </a>
+
+                </div>
+            </div>
+}</div></div>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

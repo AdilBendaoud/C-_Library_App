@@ -1,0 +1,26 @@
+﻿@model please2.Models.Livre
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <img class="card-img-top" src="/images/@Model.img" width="90" height="500" alt="" />
+                <div class="card-body">
+                    <h2 class="card-title">@Html.DisplayFor(model => model.title)</h2>
+                    <p class="card-text">
+                        <strong>Price:</strong> @Html.DisplayFor(model => model.price)<br />
+                        <strong>Author:</strong> Harper Lee<br />
+                        <strong>Edition:</strong> @Html.DisplayFor(model => model.edition)<br />
+                        <strong>Distribution Year:</strong> @Html.DisplayFor(model => model.distribution.Year)<br />
+                        <strong>Description:</strong> @Html.DisplayFor(model => model.description)
+                    </p>
+                    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

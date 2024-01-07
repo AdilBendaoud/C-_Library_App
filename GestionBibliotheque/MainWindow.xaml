@@ -1,0 +1,68 @@
+﻿<Window x:Class="GestionBibliotheque.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionBibliotheque"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1280">
+    <Window.Resources>
+        <Style x:Key="navBarButton" TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="40" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition Width="0.8*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Sidebar on the left -->
+        <StackPanel Background="#2C3E50" VerticalAlignment="Stretch">
+            <!-- Sidebar buttons -->
+            <Button Content="Dashboard" Style="{StaticResource navBarButton}" Background="Cyan"/>
+            <Button Click="EmpruntHandle" Content="Emprunts" Style="{StaticResource navBarButton}"/>
+            <Button Click="AdherantHandle" Content="Adherants" Style="{StaticResource navBarButton}"/>
+            <Button Click="LivreHandle" Content="Livres" Style="{StaticResource navBarButton}"/>
+            <Button Click="exit" Content="Quitter" Style="{StaticResource navBarButton}"/>
+        </StackPanel>
+
+        <!-- Main content area on the right -->
+        <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top">
+            <!-- Title -->
+            <TextBlock Text="Page Title" FontSize="20" FontWeight="Bold" Foreground="#333"/>
+            <!-- Search bar -->
+            <Grid>
+                <TextBox  
+                    Width="250" Height="30" 
+                    VerticalContentAlignment="Center" Padding="5,0,0,0"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchTermTextBox" Margin="5"/>
+                <TextBlock FontSize="14" IsHitTestVisible="False" Text="Enter Search Term Here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+
+            <!-- Table view -->
+            <ListView Name="dataListView" Width="Auto" Height="300">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Column 1" DisplayMemberBinding="{Binding Column1}" Width="150"/>
+                        <GridViewColumn Header="Column 2" DisplayMemberBinding="{Binding Column2}" Width="150"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>

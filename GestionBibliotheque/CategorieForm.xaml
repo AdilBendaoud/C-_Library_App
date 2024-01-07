@@ -1,0 +1,101 @@
+﻿<Window x:Class="GestionBibliotheque.CategorieForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionBibliotheque"
+        mc:Ignorable="d"
+        xmlns:fa="http://schemas.fontawesome.io/icons/" WindowStyle="None" MouseLeftButtonDown="HandleDragWindow"
+        Height="400" Width="400" Title="CategorieForm">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" CornerRadius="0" GlassFrameThickness="0"/>
+    </WindowChrome.WindowChrome>
+    <Border  BorderThickness="5" BorderBrush="#2c2c2c">
+        <DockPanel>
+            <DockPanel LastChildFill="False" DockPanel.Dock="Top" Background="#2c2c2c" Height="30">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Image Width="20" Height="20" Margin="5 0" Source="C:\Users\pc\source\repos\GestionBibliotheque\GestionBibliotheque\Assets\lightlogo.png"/>
+                    <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Foreground="White">BiblioSphère - Ajouter une Categorie</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
+                    <Button Click="MinimizeBtn" Cursor="Hand"  Width="30" Height="20" Background="Transparent" BorderThickness="0">
+                        <fa:ImageAwesome Icon="WindowMinimize" Width="14" Foreground="White"/>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#3d3d3d"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Click="MaximizeBtn" Cursor="Hand" Width="30" Height="20" Background="Transparent" BorderThickness="0">
+                        <fa:ImageAwesome Icon="WindowMaximize" Width="14" Foreground="White"/>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#3d3d3d"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Click="Exit" Width="30" Height="20" Style="{DynamicResource DangerBtn}">
+                        <fa:ImageAwesome Icon="Times" Width="14" Foreground="White"/>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+            <Grid Margin="50 35" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                    <Label Padding="5" FontSize="14" Content="Nom :"/>
+                    <TextBox x:Name="nomInput" Margin="5" Height="25"/>
+                </StackPanel>
+
+                <TextBox x:Name="idInput" Visibility="Collapsed"/>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
+                    <Button
+                     x:Name="addBtn"
+                     Style="{DynamicResource primaryBtn}" 
+                     Click="addClick" HorizontalAlignment="Center" Width="120" Height="35"
+                     VerticalAlignment="Bottom">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Foreground="White" Icon="Plus" Width="16" Margin="0 0 5 0" />
+                            <TextBlock>Add</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                     x:Name="updateBtn"
+                     Style="{DynamicResource primaryBtn}" 
+                     Click="updateClick" HorizontalAlignment="Center" Width="120" Height="35"
+                     VerticalAlignment="Bottom">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Foreground="White" Icon="FloppyOutline" Width="18" Margin="0 0 5 0" />
+                            <TextBlock>Sauvgarder</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                     x:Name="deleteBtn"
+                     Style="{DynamicResource DangerBtn}" Grid.Row="3"
+                     Click="deleteClick" HorizontalAlignment="Left" Width="120" Height="35"
+                     VerticalAlignment="Bottom">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Foreground="White" Icon="TrashOutline" Width="18" Margin="0 0 5 0" />
+                            <TextBlock><Run Text="Supprimer"/></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </Border>
+</Window>

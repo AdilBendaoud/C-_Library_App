@@ -1,0 +1,120 @@
+﻿@model please2.Models.Reservation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <title>@ViewData["Title"]</title>
+
+    <style>
+        body {
+            background-color: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            color: #28a745;
+        }
+
+        h1 {
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h4 {
+            color: #28a745;
+        }
+
+        hr {
+            border-color: #28a745;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        dl.row {
+            font-size: 18px;
+        }
+
+        dt.col-sm-2 {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        dd.col-sm-10 {
+            margin-bottom: 20px;
+        }
+
+        .btn-edit {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-out;
+        }
+
+            .btn-edit:hover {
+                background-color: #218838;
+            }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #28a745;
+            text-decoration: none;
+            transition: color 0.3s ease-out;
+        }
+
+            .back-link:hover {
+                color: #218838;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Details</h1>
+
+        <div>
+            <h4>Reservation</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Book)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Book)</dd>
+
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Bookid)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Bookid)</dd>
+
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Adherent)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Adherent)</dd>
+
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Adherentid)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Adherentid)</dd>
+            </dl>
+        </div>
+
+        <div>
+            <a class="btn-edit" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+            <a class="back-link" asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</body>
+</html>
